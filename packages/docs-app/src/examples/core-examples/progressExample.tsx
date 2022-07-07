@@ -53,8 +53,8 @@ export class ProgressExample extends React.PureComponent<IExampleProps, IProgres
                 <H5>Props</H5>
                 <IntentSelect intent={intent} onChange={this.handleModifierChange} />
                 <Switch checked={hasValue} label="Known value" onChange={this.handleIndeterminateChange} />
-                <Switch checked={animate} label="Animate" onChange={this.this.handleAnimateChange} />
-                <Switch checked={stripes} label="Stripes" onChange={this.this.handleStripesChange} />
+                <Switch checked={animate} label="Animate" onChange={this.handleAnimateChange} />
+                <Switch checked={stripes} label="Stripes" onChange={this.handleStripesChange} />
                 <Slider
                     disabled={!hasValue}
                     labelStepSize={1}
