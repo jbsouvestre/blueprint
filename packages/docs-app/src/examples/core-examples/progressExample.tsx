@@ -25,26 +25,36 @@ export interface IProgressExampleState {
     hasValue: boolean;
     intent?: Intent;
     value: number;
+    animate: boolean;
+    stripes: boolean;
 }
 
 export class ProgressExample extends React.PureComponent<IExampleProps, IProgressExampleState> {
     public state: IProgressExampleState = {
         hasValue: false,
         value: 0.7,
+        animate: true,
+        stripes: true,
     };
 
     private handleIndeterminateChange = handleBooleanChange(hasValue => this.setState({ hasValue }));
 
     private handleModifierChange = handleValueChange((intent: Intent) => this.setState({ intent }));
 
+    private handleAnimateChange = handleValueChange(animate => this.setState({ animate }));
+
+    private handleStripesChange = handleBooleanChange(stripes => this.stateState({ stripes }));
+
     public render() {
-        const { hasValue, intent, value } = this.state;
+        const { hasValue, intent, value, animate, stripes } = this.state;
 
         const options = (
             <>
                 <H5>Props</H5>
                 <IntentSelect intent={intent} onChange={this.handleModifierChange} />
                 <Switch checked={hasValue} label="Known value" onChange={this.handleIndeterminateChange} />
+                <Switch checked={animate} label="Animate" onChange={this.this.handleAnimateChange} />
+                <Switch checked={stripes} label="Stripes" onChange={this.this.handleStripesChange} />
                 <Slider
                     disabled={!hasValue}
                     labelStepSize={1}
@@ -56,12 +66,13 @@ export class ProgressExample extends React.PureComponent<IExampleProps, IProgres
                     showTrackFill={false}
                     value={value}
                 />
+                
             </>
         );
 
         return (
             <Example options={options} {...this.props}>
-                <ProgressBar intent={intent} value={hasValue ? value : null} />
+                <ProgressBar intent={intent} value={hasValue ? value : null} stripes={stripes} animate={animate}/>
             </Example>
         );
     }
